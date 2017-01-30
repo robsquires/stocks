@@ -3,9 +3,13 @@
 const React = require('react')
 const {renderToString} = require('react-dom/server')
 
+const StockComponent = require('component/StockComponent')
+const Stock = require('model/Stock')
+
 class StockController {
   index (req, res, next) {
-    res.render('stock', { markup: renderToString(<div>AAPL via React</div>) })
+    const stock = new Stock({ ticker: req.query.ticker })
+    res.render('stock', { markup: renderToString(<StockComponent stock={stock}/>) })
   }
 }
 

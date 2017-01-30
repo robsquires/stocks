@@ -1,6 +1,8 @@
 'use strict'
 
-const controllers = require('./controller')
+require('app-module-path').addPath(`${__dirname}/`)
+
+const controllers = require('controller')
 
 module.exports = function App (app) {
   // using ejs to render the page layout
