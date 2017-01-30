@@ -1,5 +1,8 @@
 {
-  "extends": "standard",
+  "extends": [
+    "standard",
+    "plugin:react/recommended"
+  ],
   "env": {
     "mocha": true,
     "node": true
