@@ -1,7 +1,7 @@
 'use strict'
 
-const TickerController = require('./TickerController')
+const StockController = require('./StockController')
 
 module.exports = {
-  ticker: new TickerController()
+  stock: new StockController()
 }

@@ -8,5 +8,5 @@ module.exports = function App (app) {
   app.set('views', `${__dirname}/views`)
 
   // setup routing
-  app.get('/', controllers.ticker.index)
+  app.get('/', controllers.stock.index)
 }
