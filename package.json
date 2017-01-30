@@ -4,12 +4,16 @@
   "description": "Stock price + sentiment checker",
   "main": "index.js",
   "scripts": {
+    "start": "babel-node server.js",
     "test": "mocha --recursive",
     "lint": "eslint app/** test/**"
   },
   "author": "Rob Squires",
   "license": "ISC",
   "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
     "chai": "^3.5.0",
     "eslint": "^3.14.1",
     "eslint-config-standard": "^6.2.1",
@@ -21,6 +25,8 @@
     "app-module-path": "^2.2.0",
     "ejs": "^2.5.5",
     "express": "^4.14.1",
-    "immutable": "^3.8.1"
+    "immutable": "^3.8.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   }
 }
