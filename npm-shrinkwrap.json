@@ -6,6 +6,11 @@
       "version": "2.2.0",
       "from": "app-module-path@latest",
       "resolved": "https://registry.npmjs.org/app-module-path/-/app-module-path-2.2.0.tgz"
+    },
+    "immutable": {
+      "version": "3.8.1",
+      "from": "immutable@latest",
+      "resolved": "https://registry.npmjs.org/immutable/-/immutable-3.8.1.tgz"
     }
   }
 }
