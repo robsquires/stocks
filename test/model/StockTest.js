@@ -10,11 +10,11 @@ describe('Stock Model', () => {
   })
 
   it('should hold the company name', () => {
-    const stock = new Stock({ name: 'Apple'})
+    const stock = new Stock({ name: 'Apple' })
     expect(stock.name).to.equal('Apple')
   })
   it('should hold the ticker', () => {
-    const stock = new Stock({ ticker: 'AAPL'})
+    const stock = new Stock({ ticker: 'AAPL' })
     expect(stock.ticker).to.equal('AAPL')
   })
 })

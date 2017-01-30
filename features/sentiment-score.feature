@@ -1,7 +1,7 @@
 Feature: Sentiment Score
   As a User
   I want to to view a score of a company's sentiment
-  So I can make a descision faster
+  So I can make a decision faster
 
   Scenario: Company has a positive score
 
@@ -9,4 +9,4 @@ Feature: Sentiment Score
 
   Scenario: Company has a neutral score
 
-  Scenario: Score is unavailable for a company
+  Scenario: The score could not be calculated for a company

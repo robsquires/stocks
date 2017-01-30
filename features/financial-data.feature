@@ -4,10 +4,10 @@ Feature: Financial Data
   So I can use this information to make a decision
 
   # Notes:
-  # Stock price is only useful if paired with
+  # Stock price is probably only useful if paired with
   # - currency
   # - date/time of the price (as-of)
 
   Scenario: A stock price is available for a company
 
-  Scenario: A stock price is uavailable for a company
+  Scenario: A stock price is unavailable for a company
