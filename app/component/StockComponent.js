@@ -2,7 +2,7 @@
 
 const React = require('react')
 
-const Stock = require('model/Stock')
+const Stock = require('app/model/Stock')
 
 const StockComponent = (props) => (
   <div>

@@ -3,8 +3,8 @@
 const React = require('react')
 const {renderToString} = require('react-dom/server')
 
-const StockComponent = require('component/StockComponent')
-const Stock = require('model/Stock')
+const StockComponent = require('app/component/StockComponent')
+const Stock = require('app/model/Stock')
 
 class StockController {
   index (req, res, next) {
