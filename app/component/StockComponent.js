@@ -4,9 +4,10 @@ const React = require('react')
 
 const Stock = require('app/model/Stock')
 
-const StockComponent = (props) => (
+const StockComponent = ({ stock }) => (
   <div>
-    {props.stock.ticker}
+    <div>{stock.name}</div>
+    <div>{stock.ticker}</div>
   </div>
 )
 
