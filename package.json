@@ -4,8 +4,20 @@
   "description": "Stock price + sentiment checker",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "mocha --recursive",
+    "lint": "eslint app/** test/**"
   },
   "author": "Rob Squires",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.14.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "mocha": "^3.2.0"
+  },
+  "dependencies": {
+    "app-module-path": "^2.2.0"
+  }
 }

@@ -1,0 +1,11 @@
+{
+  "name": "stocks",
+  "version": "1.0.0",
+  "dependencies": {
+    "app-module-path": {
+      "version": "2.2.0",
+      "from": "app-module-path@latest",
+      "resolved": "https://registry.npmjs.org/app-module-path/-/app-module-path-2.2.0.tgz"
+    }
+  }
+}
