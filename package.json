@@ -1,0 +1,11 @@
+{
+  "name": "stocks",
+  "version": "1.0.0",
+  "description": "Stock price + sentiment checker",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "Rob Squires",
+  "license": "ISC"
+}
