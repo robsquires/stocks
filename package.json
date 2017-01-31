@@ -31,9 +31,11 @@
     "express": "^4.14.1",
     "immutable": "^3.8.1",
     "mongodb": "https://registry.npmjs.org/mongodb/-/mongodb-2.2.22.tgz",
+    "node-fetch": "https://registry.npmjs.org/node-fetch/-/node-fetch-1.6.3.tgz",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "sinon": "^1.17.7",
-    "sinon-chai": "^2.8.0"
+    "sinon-chai": "^2.8.0",
+    "winston": "^2.3.1"
   }
 }
