@@ -20,7 +20,13 @@ const Stock = Record({
    * price
    * @type Price
    */
-  price: null
+  price: null,
+
+  /**
+   * storyFeedUrl
+   * @type string
+   */
+  storyFeedUrl: null
 })
 
 module.exports = Stock
