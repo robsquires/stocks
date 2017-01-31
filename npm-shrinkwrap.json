@@ -248,7 +248,7 @@
     },
     "mongodb": {
       "version": "2.2.22",
-      "from": "mongodb@latest",
+      "from": "https://registry.npmjs.org/mongodb/-/mongodb-2.2.22.tgz",
       "resolved": "https://registry.npmjs.org/mongodb/-/mongodb-2.2.22.tgz",
       "dependencies": {
         "readable-stream": {
