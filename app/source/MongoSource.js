@@ -8,8 +8,7 @@ class MongoSource {
 
   find (query) {
     return new Promise((resolve, reject) => {
-      this.mongoClient
-        .get()
+      this.mongoClient.get()
         .then(db => {
           db.collection(this.collectionName)
             .findOne(query, (err, doc) => {

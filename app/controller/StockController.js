@@ -3,7 +3,7 @@
 const React = require('react')
 const {renderToString} = require('react-dom/server')
 
-const StockComponent = require('app/component/StockComponent')
+const StockSearch = require('app/container/StockSearch')
 const Stock = require('app/model/Stock')
 const {companyData} = require('app/data-service')
 
@@ -13,7 +13,7 @@ class StockController {
     companyData.populate(stock)
       .then(populatedStock => {
         console.log(populatedStock)
-        res.render('stock', { markup: renderToString(<StockComponent stock={populatedStock}/>) })
+        res.render('stock', { markup: renderToString(<StockSearch stock={populatedStock}/>) })
       })
   }
 }

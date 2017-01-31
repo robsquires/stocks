@@ -4,15 +4,15 @@ const React = require('react')
 
 const Stock = require('app/model/Stock')
 
-const StockComponent = ({ stock }) => (
+const StockCard = ({ stock }) => (
   <div>
     <div>{stock.name}</div>
     <div>{stock.ticker}</div>
   </div>
 )
 
-StockComponent.propTypes = {
-  stock: React.PropTypes.instanceOf(Stock)
+StockCard.propTypes = {
+  stock: React.PropTypes.instanceOf(Stock).isRequired
 }
 
-module.exports = StockComponent
+module.exports = StockCard
