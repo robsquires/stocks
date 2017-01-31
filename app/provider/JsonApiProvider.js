@@ -1,7 +1,7 @@
 'use strict'
 
 class JsonApiProvider {
-  constructor (fetch, baseUrl) {
+  constructor (fetch, baseUrl = '') {
     this.fetch = fetch
     this.baseUrl = baseUrl
   }
