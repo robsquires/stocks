@@ -6,14 +6,31 @@ const {renderToString} = require('react-dom/server')
 const StockSearch = require('app/container/StockSearch')
 const Stock = require('app/model/Stock')
 const {companyData} = require('app/data-service')
+const UnknownStockError = require('app/error/UnknownStockError')
+
+
+function render (res, component) {
+  return res.render('stock', {
+    markup: renderToString(component)
+  })
+}
 
 class StockController {
   index (req, res, next) {
+    if (!req.query.ticker) {
+      return render(res, <StockSearch />)
+    }
+
     const stock = new Stock({ ticker: req.query.ticker.toUpperCase() })
+
     companyData.populate(stock)
       .then(populatedStock => {
-        console.log(populatedStock)
-        res.render('stock', { markup: renderToString(<StockSearch stock={populatedStock}/>) })
+        return render(res, <StockSearch stock={populatedStock}/>)
+      })
+      .catch(err => {
+        if (err instanceof UnknownStockError) {
+          return render(res, <StockSearch error={err}/>)
+        }
       })
   }
 }
