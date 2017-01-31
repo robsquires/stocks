@@ -1,27 +1,27 @@
 'use strict'
 
 const Stock = require('app/model/Stock')
-const CompanyLookupService = require('app/data-service/CompanyLookupService')
+const CompanyRepository = require('app/repository/CompanyRepository')
 const UnknownStockError = require('app/error/UnknownStockError')
 
 const stock = new Stock({ ticker: 'AAPL' })
 
-describe('Company Lookup Service', () => {
+describe('Company Repsitory', () => {
   let mongoProvider
-  let service
+  let repository
   beforeEach(() => {
     mongoProvider = {
       find: sinon.stub()
     }
-    service = new CompanyLookupService(mongoProvider)
+    repository = new CompanyRepository(mongoProvider)
   })
   it('should be instantiable', () => {
-    expect(service).to.exist
+    expect(repository).to.exist
   })
 
   it('should find a stock with data when the ticker is recognised by the provider', () => {
     mongoProvider.find.returns(Promise.resolve({ name: 'Apple Computer Inc.' }))
-    return service.find(stock)
+    return repository.find(stock)
       .then(updatedStock => {
         expect(updatedStock.name).to.equal('Apple Computer Inc.')
       })
@@ -29,7 +29,7 @@ describe('Company Lookup Service', () => {
 
   it('should return an Error when the provider fails', () => {
     mongoProvider.find.returns(Promise.reject())
-    return service.find(stock)
+    return repository.find(stock)
       .then(() => {
         throw new Error('Expected promise to reject')
       })
@@ -41,7 +41,7 @@ describe('Company Lookup Service', () => {
 
   it('should return an UnknownStockError when the stock is not recognised by the provider', () => {
     mongoProvider.find.returns(Promise.resolve(null))
-    return service.find(stock)
+    return repository.find(stock)
       .then(() => {
         throw new Error('Expected promise to reject')
       })

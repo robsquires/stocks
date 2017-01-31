@@ -3,7 +3,7 @@
 const Stock = require('app/model/Stock')
 const UnknownStockError = require('app/error/UnknownStockError')
 
-class CompanyLookupService {
+class CompanyRepository {
 
   constructor (mongoProvider) {
     this.mongoProvider = mongoProvider
@@ -26,4 +26,4 @@ class CompanyLookupService {
   }
 }
 
-module.exports = CompanyLookupService
+module.exports = CompanyRepository

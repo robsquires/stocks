@@ -2,7 +2,7 @@
 
 const Price = require('app/model/Price')
 
-class PriceService {
+class PriceRepository {
 
   constructor (api) {
     if (!api) {
@@ -37,4 +37,4 @@ class PriceService {
   }
 }
 
-module.exports = PriceService
+module.exports = PriceRepository

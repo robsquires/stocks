@@ -1,15 +1,15 @@
 'use strict'
 
-const CompanyLookupService = require('app/data-service/CompanyLookupService')
-const PriceService = require('app/data-service/PriceService')
-const NewsService = require('app/data-service/NewsService')
+const CompanyRepository = require('app/repository/CompanyRepository')
+const PriceRepository = require('app/repository/PriceRepository')
+const NewsRepository = require('app/repository/NewsRepository')
 const provider = require('./provider')
 
 /**
  * public services
  */
 module.exports = {
-  companyLookup: new CompanyLookupService(provider.companyData),
-  price: new PriceService(provider.priceApi),
-  news: new NewsService(provider.newsApi)
+  companyLookup: new CompanyRepository(provider.companyData),
+  price: new PriceRepository(provider.priceApi),
+  news: new NewsRepository(provider.newsApi)
 }

@@ -2,7 +2,7 @@
 
 const Stock = require('app/model/Stock')
 const Price = require('app/model/Price')
-const PriceService = require('app/data-service/PriceService')
+const PriceRepository = require('app/repository/PriceRepository')
 
 const stock = new Stock({ ticker: 'GOOG' })
 
@@ -14,22 +14,22 @@ const API_DATA = {
   storyFeedUrl: 'http://mm-recruitment-story-feed-api.herokuapp.com/8271'
 }
 
-describe('Price Service', () => {
+describe('Price Repository', () => {
   let apiProvider
-  let service
+  let repository
   beforeEach(() => {
     apiProvider = {
       get: sinon.stub()
     }
-    service = new PriceService(apiProvider)
+    repository = new PriceRepository(apiProvider)
   })
   it('should be instantiable', () => {
-    expect(service).to.exist
+    expect(repository).to.exist
   })
 
   it('should set a Price against the stock when the lookup was successful', () => {
     apiProvider.get.returns(Promise.resolve(API_DATA))
-    return service.lookup(stock)
+    return repository.lookup(stock)
       .then(updatedStock => {
         expect(updatedStock).to.be.ok
         expect(updatedStock.storyFeedUrl).to.equal(API_DATA.storyFeedUrl)
@@ -45,7 +45,7 @@ describe('Price Service', () => {
 
   it('should return an Error when the provider fails', () => {
     apiProvider.get.returns(Promise.reject())
-    return service.lookup(stock)
+    return repository.lookup(stock)
       .then(() => {
         throw new Error('Expected promise to reject')
       })
