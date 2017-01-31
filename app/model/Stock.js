@@ -1,8 +1,8 @@
 'use strict'
 
-const {Record} = require('immutable')
+const {Record, List} = require('immutable')
 
-const Stock = Record({
+const StockRecord = Record({
   /**
    * name
    * @type string
@@ -26,7 +26,19 @@ const Stock = Record({
    * storyFeedUrl
    * @type string
    */
-  storyFeedUrl: null
+  storyFeedUrl: null,
+
+  /**
+   * stories
+   * @type immutable.List
+   */
+  stories: List()
 })
+
+class Stock extends StockRecord {
+  addStory (story) {
+    return this.update('stories', stories => stories.push(story))
+  }
+}
 
 module.exports = Stock
