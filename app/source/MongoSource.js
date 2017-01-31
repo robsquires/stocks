@@ -19,6 +19,7 @@ class MongoSource {
             })
         })
         .catch(err => {
+          console.log(err)
           reject(new Error(`Could not lookup against ${this.collectionName}`))
         })
     })
