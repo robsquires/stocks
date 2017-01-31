@@ -7,8 +7,7 @@ const StockSearch = require('app/container/StockSearch')
 const Stock = require('app/model/Stock')
 const UnknownStockError = require('app/error/UnknownStockError')
 
-
-module.exports = function StockController (companyLookup) {
+module.exports = function StockController (companyLookup, priceApi) {
   if (!companyLookup) {
     // typescript would assist here
     throw new TypeError('CompanyLookup service not provided')
@@ -23,6 +22,9 @@ module.exports = function StockController (companyLookup) {
     }
 
     const stock = new Stock({ ticker: req.query.ticker.toUpperCase() })
+    priceApi.lookup(stock).then(doc => {
+      console.log(doc)
+    })
 
     companyLookup.find(stock)
       .then(populatedStock => {
