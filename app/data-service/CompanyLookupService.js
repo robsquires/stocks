@@ -3,15 +3,15 @@
 const Stock = require('app/model/Stock')
 const UnknownStockError = require('app/error/UnknownStockError')
 
-class CompanyDataService {
+class CompanyLookupService {
 
-  constructor (mongoSource) {
-    this.mongoSource = mongoSource
+  constructor (mongoProvider) {
+    this.mongoProvider = mongoProvider
   }
 
-  populate (stock) {
+  find (stock) {
     return new Promise((resolve, reject) => {
-      this.mongoSource.find({ tickerCode: stock.ticker })
+      this.mongoProvider.find({ tickerCode: stock.ticker })
         .then(doc => {
           if (!doc) {
             return reject(new UnknownStockError(stock.ticker))
@@ -26,4 +26,4 @@ class CompanyDataService {
   }
 }
 
-module.exports = CompanyDataService
+module.exports = CompanyLookupService

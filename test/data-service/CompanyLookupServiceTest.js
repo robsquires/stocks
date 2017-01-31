@@ -1,27 +1,27 @@
 'use strict'
 
 const Stock = require('app/model/Stock')
-const CompanyDataService = require('app/data-service/CompanyDataService')
+const CompanyLookupService = require('app/data-service/CompanyLookupService')
 const UnknownStockError = require('app/error/UnknownStockError')
 
 const stock = new Stock({ ticker: 'AAPL' })
 
-describe('Company Data Service', () => {
-  let mongoSource
+describe('Company Lookup Service', () => {
+  let mongoProvider
   let service
   beforeEach(() => {
-    mongoSource = {
+    mongoProvider = {
       find: sinon.stub()
     }
-    service = new CompanyDataService(mongoSource)
+    service = new CompanyLookupService(mongoProvider)
   })
   it('should be instantiable', () => {
     expect(service).to.exist
   })
 
-  it('should populate a stock with data when the ticker is recognised by the source', () => {
-    mongoSource.find.returns(Promise.resolve({ name: 'Apple Computer Inc.' }))
-    return service.populate(stock)
+  it('should find a stock with data when the ticker is recognised by the provider', () => {
+    mongoProvider.find.returns(Promise.resolve({ name: 'Apple Computer Inc.' }))
+    return service.find(stock)
       .then(updatedStock => {
         expect(updatedStock.name).to.equal('Apple Computer Inc.')
       })
@@ -30,9 +30,9 @@ describe('Company Data Service', () => {
       })
   })
 
-  it('should return an Error when the source fails', () => {
-    mongoSource.find.returns(Promise.reject())
-    return service.populate(stock)
+  it('should return an Error when the provider fails', () => {
+    mongoProvider.find.returns(Promise.reject())
+    return service.find(stock)
       .then(() => {
         throw new Error('Expected promise to reject')
       })
@@ -42,9 +42,9 @@ describe('Company Data Service', () => {
       })
   })
 
-  it('should return an UnknownStockError when the stock is not recognised by the source', () => {
-    mongoSource.find.returns(Promise.resolve(null))
-    return service.populate(stock)
+  it('should return an UnknownStockError when the stock is not recognised by the provider', () => {
+    mongoProvider.find.returns(Promise.resolve(null))
+    return service.find(stock)
       .then(() => {
         throw new Error('Expected promise to reject')
       })

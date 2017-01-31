@@ -1,6 +1,6 @@
 'use strict'
 
-class MongoSource {
+class MongoProvider {
   constructor (mongoClient, collectionName) {
     this.mongoClient = mongoClient
     this.collectionName = collectionName
@@ -26,4 +26,4 @@ class MongoSource {
   }
 }
 
-module.exports = MongoSource
+module.exports = MongoProvider

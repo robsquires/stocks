@@ -1,8 +1,8 @@
 'use strict'
 
-const MongoSource = require('app/source/MongoSource')
+const MongoProvider = require('app/provider/MongoProvider')
 
-describe('Mongo Source', () => {
+describe('Mongo Provider', () => {
   let source
   let mongoClient
   let mongoDb
@@ -20,7 +20,7 @@ describe('Mongo Source', () => {
       get: sinon.stub().returns(Promise.resolve(mongoDb))
     }
 
-    source = new MongoSource(mongoClient, COLLECTION_NAME)
+    source = new MongoProvider(mongoClient, COLLECTION_NAME)
   })
   it('should be instantiable', () => {
     expect(source).to.exist

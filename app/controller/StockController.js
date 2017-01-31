@@ -5,34 +5,43 @@ const {renderToString} = require('react-dom/server')
 
 const StockSearch = require('app/container/StockSearch')
 const Stock = require('app/model/Stock')
-const {companyData} = require('app/data-service')
 const UnknownStockError = require('app/error/UnknownStockError')
 
 
-function render (res, component) {
-  return res.render('stock', {
-    markup: renderToString(component)
-  })
-}
+module.exports = function StockController (companyLookup) {
+  if (!companyLookup) {
+    // typescript would assist here
+    throw new TypeError('CompanyLookup service not provided')
+  }
 
-class StockController {
-  index (req, res, next) {
+  /**
+   * index action
+   */
+  function index (req, res, next) {
     if (!req.query.ticker) {
-      return render(res, <StockSearch />)
+      return renderResponse(res, <StockSearch />)
     }
 
     const stock = new Stock({ ticker: req.query.ticker.toUpperCase() })
 
-    companyData.populate(stock)
+    companyLookup.find(stock)
       .then(populatedStock => {
-        return render(res, <StockSearch stock={populatedStock}/>)
+        return renderResponse(res, <StockSearch stock={populatedStock}/>)
       })
       .catch(err => {
         if (err instanceof UnknownStockError) {
-          return render(res, <StockSearch error={err}/>)
+          return renderResponse(res, <StockSearch error={err}/>)
         }
       })
   }
-}
 
-module.exports = StockController
+  function renderResponse (res, component) {
+    return res.render('stock', {
+      markup: renderToString(component)
+    })
+  }
+
+  return {
+    index
+  }
+}

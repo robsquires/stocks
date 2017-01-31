@@ -1,11 +1,11 @@
 'use strict'
 
-const CompanyDataService = require('./CompanyDataService')
-const source = require('app/source')
+const CompanyLookupService = require('./CompanyLookupService')
+const provider = require('app/provider')
 
-const companyData = new CompanyDataService(source.companyData)
+const companyLookup = new CompanyLookupService(provider.companyData)
 
 // exposed services
 module.exports = {
-  companyData
+  companyLookup
 }
