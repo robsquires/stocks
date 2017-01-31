@@ -7,7 +7,10 @@ require('app-module-path').addPath(`${__dirname}/../`)
 
 // test apparatus
 const chai = require('chai')
+const sinon = require('sinon')
+chai.use(require('sinon-chai'))
 global.expect = chai.expect
+global.sinon = sinon
 
 // dom for component rendering
 const {jsdom} = require('jsdom')
