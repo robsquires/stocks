@@ -12,6 +12,12 @@ chai.use(require('sinon-chai'))
 global.expect = chai.expect
 global.sinon = sinon
 
+global.logger = {
+  debug: f => f,
+  info: f => f,
+  error: f => f
+}
+
 // dom for component rendering
 const {jsdom} = require('jsdom')
 

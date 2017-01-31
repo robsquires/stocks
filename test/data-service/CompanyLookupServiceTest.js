@@ -25,9 +25,6 @@ describe('Company Lookup Service', () => {
       .then(updatedStock => {
         expect(updatedStock.name).to.equal('Apple Computer Inc.')
       })
-      .catch(() => {
-        throw new Error('Expected promise to resolve')
-      })
   })
 
   it('should return an Error when the provider fails', () => {
