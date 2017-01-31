@@ -7,7 +7,7 @@ const Stock = require('app/model/Stock')
 
 const stock = new Stock({ ticker: 'AAPL', name: 'Apple Computer Inc' })
 
-describe('Stock Card', () => {
+describe('Stock Card component', () => {
   it('should display the stock ticker', () => {
     const wrapper = shallow(<StockCard stock={stock} />)
     expect(wrapper.html()).to.match(/AAPL/)

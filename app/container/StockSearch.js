@@ -4,6 +4,7 @@ const React = require('react')
 
 const Stock = require('app/model/Stock')
 const StockCard = require('app/component/StockCard')
+const Search = require('app/component/Search')
 
 const StockSearch = ({ stock }) => (
   <div>
@@ -12,6 +13,7 @@ const StockSearch = ({ stock }) => (
     ) : (
       <div>Search for a stock below</div>
     )}
+    <Search action='/'/>
   </div>
 )
 
