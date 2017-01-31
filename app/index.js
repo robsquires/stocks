@@ -2,7 +2,7 @@
 
 require('app-module-path').addPath(`${__dirname}/../`)
 
-const controllers = require('app/controller')
+const controllers = require('app/services/controller')
 
 module.exports = function App (app) {
   // using ejs to render the page layout
