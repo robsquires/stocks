@@ -12,5 +12,8 @@ const SentimentIcon = ({ score }) => (
   </span>
 )
 
+SentimentIcon.propTypes = {
+  score: React.PropTypes.string.isRequired
+}
 
 module.exports = SentimentIcon

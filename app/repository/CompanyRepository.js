@@ -1,6 +1,5 @@
 'use strict'
 
-const Stock = require('app/model/Stock')
 const UnknownStockError = require('app/error/UnknownStockError')
 
 class CompanyRepository {

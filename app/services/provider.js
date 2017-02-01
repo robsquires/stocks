@@ -1,6 +1,5 @@
 'use strict'
 
-
 const MongoProvider = require('app/provider/MongoProvider')
 const JsonApiProvider = require('app/provider/JsonApiProvider')
 
