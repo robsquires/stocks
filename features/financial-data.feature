@@ -8,6 +8,8 @@ Feature: Financial Data
   # - currency
   # - date/time of the price (as-of)
 
+  @automate
   Scenario: A stock price is available for a company
 
+  @todo
   Scenario: A stock price is unavailable for a company

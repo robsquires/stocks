@@ -9,4 +9,5 @@ Feature: Sentiment Score
 
   Scenario: Company has a neutral score
 
+  @todo
   Scenario: The score could not be calculated for a company
