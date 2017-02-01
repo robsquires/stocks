@@ -19,7 +19,7 @@ class PriceRepository {
           const price = new Price({
             value: data.latestPrice,
             units: data.priceUnits,
-            asOf: data.asOf
+            asOf: new Date(data.asOf)
           })
 
           const updatedStock = stock.merge({
