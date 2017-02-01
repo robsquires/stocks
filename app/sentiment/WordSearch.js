@@ -1,6 +1,5 @@
 'use strict'
 
-
 class WordSearch {
   constructor (dictionary = []) {
     const characterClasses = dictionary.join('|')

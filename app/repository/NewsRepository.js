@@ -2,13 +2,18 @@
 
 const Story = require('app/model/Story')
 
-class NewsRepository {
+class NewsService {
 
-  constructor (api) {
+  constructor (api, positivityCalculator) {
     if (!api) {
       throw new TypeError('News API is required')
     }
+
+    if (!positivityCalculator) {
+      throw new TypeError('PositivityCalculator is required')
+    }
     this.api = api
+    this.positivityCalculator = positivityCalculator
   }
 
   lookup (stock) {
@@ -16,10 +21,12 @@ class NewsRepository {
       this.api.get(stock.storyFeedUrl)
         .then(storyData => {
           const updatedStock = storyData.reduce((stock, data) => {
-            return stock.addStory(new Story({
+            const story = new Story({
               headline: data.headline,
               body: data.body
-            }))
+            })
+            // calculate score before adding it to the stock
+            return stock.addStory(this.positivityCalculator.calculateScore(story))
           }, stock)
 
           resolve(updatedStock)
@@ -32,4 +39,4 @@ class NewsRepository {
   }
 }
 
-module.exports = NewsRepository
+module.exports = NewsService
