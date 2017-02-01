@@ -5,29 +5,32 @@ const React = require('react')
 const Stock = require('app/model/Stock')
 const StockCard = require('app/component/StockCard')
 const Search = require('app/component/Search')
-const UnknownStockError = require('app/error/UnknownStockError')
+const ErrorMessage = require('app/component/ErrorMessage')
 
 const StockSearch = ({ stock, error }) => (
-  <div>
+  <div className="container">
+    <div className="row">
+      <div className="col" style={{ margin: '30px 0' }}>
+        <Search action='/'/>
+      </div>
+    </div>
+    <div className="row">
+      <div className="col">
+        { error &&
+          <ErrorMessage error={error}/>
+        }
 
-    { error &&
-      <div className='error'>{`Sorry, we were unable to find a matching stock for ${error.ticker}`}</div>
-    }
-
-    {stock ? (
-      <StockCard stock={stock}/>
-    ) : (
-      <div>Search for a stock below</div>
-    )}
-
-    <Search action='/'/>
-
+        { stock &&
+          <StockCard stock={stock}/>
+        }
+      </div>
+    </div>
   </div>
 )
 
 StockSearch.propTypes = {
   stock: React.PropTypes.instanceOf(Stock),
-  error: React.PropTypes.instanceOf(UnknownStockError)
+  error: React.PropTypes.instanceOf(Error)
 }
 
 module.exports = StockSearch
