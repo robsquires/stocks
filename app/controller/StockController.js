@@ -22,15 +22,13 @@ module.exports = function StockController (companyLookup, priceApi, newsApi) {
     }
 
     const stock = new Stock({ ticker: req.query.ticker.toUpperCase() })
-    priceApi.lookup(stock).then(updatedStock => {
-      newsApi.lookup(updatedStock).then(doc => {
-        console.log(doc)
-      })
-    })
 
     companyLookup.find(stock)
+      .then(stock => priceApi.lookup(stock))
+      .then(stock => newsApi.lookup(stock))
       .then(populatedStock => {
-        return renderResponse(res, <StockSearch stock={populatedStock}/>)
+        console.log(populatedStock)
+        renderResponse(res, <StockSearch stock={populatedStock}/>)
       })
       .catch(err => {
         if (err instanceof UnknownStockError) {
