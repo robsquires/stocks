@@ -27,13 +27,13 @@ module.exports = function StockController (companyLookup, priceApi, newsApi) {
       .then(stock => priceApi.lookup(stock))
       .then(stock => newsApi.lookup(stock))
       .then(populatedStock => {
-        console.log(populatedStock)
         renderResponse(res, <StockSearch stock={populatedStock}/>)
       })
       .catch(err => {
-        if (err instanceof UnknownStockError) {
-          return renderResponse(res, <StockSearch error={err}/>)
-        }
+        return renderResponse(
+          res.status(err instanceof UnknownStockError ? 200 : 500),
+          <StockSearch error={err}/>
+        )
       })
   }
 

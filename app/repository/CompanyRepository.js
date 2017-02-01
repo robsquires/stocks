@@ -18,7 +18,7 @@ class CompanyRepository {
           resolve(stock.set('name', doc.name))
         })
         .catch(err => {
-          console.log(err)
+          logger.error(err)
           reject(new Error(`Could not lookup ${stock.ticker}`))
         })
     })

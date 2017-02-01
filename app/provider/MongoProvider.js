@@ -19,7 +19,7 @@ class MongoProvider {
             })
         })
         .catch(err => {
-          console.log(err)
+          logger.error(err)
           reject(new Error(`Could not lookup against ${this.collectionName}`))
         })
     })
