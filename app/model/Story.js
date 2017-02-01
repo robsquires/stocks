@@ -2,7 +2,7 @@
 
 const {Record} = require('immutable')
 
-const Story = Record({
+const StoryRecord = Record({
 
   /**
    * headline
@@ -14,7 +14,31 @@ const Story = Record({
    * body
    * @type string
    */
-  body: ''
+  body: '',
+
+  /**
+   * positivity
+   * @type integer
+   */
+  positivity: null
 })
+
+class Story extends StoryRecord {
+
+  calculateSentiment () {
+    const positivity = this.positivity
+    if (positivity < 0) {
+      return Story.NEGATIVE
+    } else if (positivity >= 2) {
+      return Story.POSITIVE
+    } else {
+      return Story.NEUTRAL
+    }
+  }
+}
+
+Story.NEUTRAL = 'neutral'
+Story.POSITIVE = 'positive'
+Story.NEGATIVE = 'negative'
 
 module.exports = Story
